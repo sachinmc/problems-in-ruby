@@ -1,5 +1,3 @@
-require 'pry'
-
 class Pet
   attr_reader :pet, :name
   def initialize(pet, name)
@@ -42,16 +40,13 @@ class Shelter
   def print_adoptions
     list.each do |owner, animal|
       puts "#{owner.name} has adopted the following pets:"
-      animal.each do |pet|
-        puts "a #{pet.pet} named #{pet.name}"
-      end
+      animal.each { |pet| puts "a #{pet.pet} named #{pet.name}" }
       puts " "
     end
   end
 
   private
   attr_reader :list
-
 end
 
 butterscotch = Pet.new('cat', 'Butterscotch')
