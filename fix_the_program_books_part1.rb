@@ -14,6 +14,7 @@ book = Book.new("Neil Stephenson", "Snow Crash")
 # to_s is called on String with #{} and with puts.
 # note that "" is part of the output string, the interpolation happens
 # with percent string %()
+# note: String.new('xyz').to_s -> self # 'xyz'
 puts %(The author of "#{book.title}" is #{book.author}.)
 # to_s is called on object with #{}, then on String with puts
 puts %(book = #{book}.)
