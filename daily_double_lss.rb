@@ -3,7 +3,10 @@
 def crunch(string)
   index = 0
   result = ''
-  while index <= string.length
+  # At first I missed the -1 on string.length but it still worked
+  # this is because the conditional statement unless compared nil == nil
+  # which returns true 
+  while index <= string.length - 1
     result << string[index] unless string[index] == string[index + 1]
     index +=1
   end
