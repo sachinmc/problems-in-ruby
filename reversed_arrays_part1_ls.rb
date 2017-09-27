@@ -1,5 +1,7 @@
 # reversed_arrays_part1_ls.rb
 
+require 'benchmark'
+
 def reverse!(list)
   left_index = 0
   right_index = -1
@@ -28,3 +30,9 @@ p list == ["abc"]
 p list = []
 p reverse!(list) # => []
 p list == []
+
+time = Benchmark.measure do
+  p reverse!([1,2,3,4])
+end
+
+puts time
