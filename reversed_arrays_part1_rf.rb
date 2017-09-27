@@ -5,22 +5,15 @@ require 'pry'
 
 def reverse!(list)
   swaps = 0
-  counter1 = 0
-  counter2 = list.size - 1
+  index_1 = 0
+  index_2 = list.size -  1
+  return list if list.size == 0 
   loop do
-    if list.size == 0
-      break
-    elsif swaps == list.size/2
-      binding.pry
-      break
-    else
-      temp = list[counter1]
-      list[counter1] = list[counter2]
-      list[counter2] = temp
-      swaps += 1
-      counter1 += 1
-      counter2 -= 1
-    end
+    list[index_1], list[index_2] = list[index_2], list[index_1]
+    index_1 += 1
+    index_2 -= 1
+    break if swaps == list.size/2
+    swaps += 1
   end
   list
 end
