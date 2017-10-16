@@ -17,10 +17,9 @@ def thousand_lights(n)
   switch = false
   hash = Hash.new(switch)
   for factor in (1..n)
-    switch = true if factor == 1
     for key in (1..n)
       if key % factor == 0
-        hash[key] == true ? hash[key] = !switch : hash[key] = switch
+        hash[key] == false ? hash[key] = !switch : hash[key] = switch
       end
     end
   end
