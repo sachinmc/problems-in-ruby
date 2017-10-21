@@ -1,7 +1,7 @@
 
 class Card
   attr_reader :rank, :suit
-  #include Comparable
+  include Comparable
 
   VALUES = { 'Jack' => 11, 'Queen' => 12, 'King' => 13, 'Ace' => 14}
 
