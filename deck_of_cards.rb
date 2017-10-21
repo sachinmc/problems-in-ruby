@@ -1,5 +1,3 @@
-# highest and lowest ranking cards from an array of card objects
-# <=> in Card class needs to be updated, it is not used here though
 # note, Card#== is used.
 
 class Deck
@@ -38,9 +36,9 @@ class Card
     @suit = suit
   end
 
-#  def <=>(other)
-#    RANKS[rank] <=> RANKS[other.rank]
-#  end
+  def <=>(other)
+    Deck::RANKS.index(rank) <=> Deck::RANKS.index(other.rank)
+  end
 
   def ==(other)
     rank == other.rank && suit == other.suit
@@ -61,3 +59,33 @@ puts drawn.count { |card| card.suit == 'Hearts'} == 13
 puts drawn2 = []
 puts 52.times { drawn2 << deck.draw }
 puts drawn != drawn2
+
+
+# cards = [Card.new(2, 'Hearts'),
+#          Card.new(10, 'Diamonds'),
+#          Card.new('Ace', 'Clubs')]
+# puts cards
+# puts cards.min == Card.new(2, 'Hearts')
+# puts cards.max == Card.new('Ace', 'Clubs')
+
+# cards = [Card.new(5, 'Hearts')]
+# puts cards.min == Card.new(5, 'Hearts')
+# puts cards.max == Card.new(5, 'Hearts')
+
+# cards = [Card.new(4, 'Hearts'),
+#          Card.new(4, 'Diamonds'),
+#          Card.new(10, 'Clubs')]
+# puts cards.min.rank == 4
+# puts cards.max == Card.new(10, 'Clubs')
+
+# cards = [Card.new(7, 'Diamonds'),
+#          Card.new('Jack', 'Diamonds'),
+#          Card.new('Jack', 'Spades')]
+# puts cards.min == Card.new(7, 'Diamonds')
+# puts cards.max.rank == 'Jack'
+
+# cards = [Card.new(8, 'Diamonds'),
+#          Card.new(8, 'Clubs'),
+#          Card.new(8, 'Spades')]
+# puts cards.min.rank == 8
+# puts cards.max.rank == 8
