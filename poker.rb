@@ -1,6 +1,5 @@
 # Create and evaluate poker hands
 # using Deck and Card classes created previously
-require 'pry'
 
 class Deck
   RANKS = (2..10).to_a + %w(Jack Queen King Ace).freeze
@@ -49,6 +48,7 @@ class Card < Deck
     RANKS.index(rank) <=> RANKS.index(other.rank)
   end
 
+  # remove if using Comparable#==
   def ==(other)
     rank == other.rank && suit == other.suit
   end
@@ -125,7 +125,7 @@ class PokerHand < Card
 
   def pair?
     hand_rank = @hand.map(&:rank)
-    hand_rank.select { |rank| hand_rank.count(rank) == 2 }.size == 1 
+    hand_rank.select { |rank| hand_rank.count(rank) == 2 }.size == 1
   end
 
 end
