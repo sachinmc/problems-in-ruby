@@ -92,18 +92,12 @@ class PokerHand < Card
   end
 
   def straight_flush?
-    idx = RANKS.index(@hand.sort[0].rank)
-    flush? && RANKS.slice(idx, 5) == @hand.sort.map(&:rank)
+    straight? && flush?
   end
 
   def four_of_a_kind?
     hand_rank = @hand.map(&:rank)
-    idx = 0
-    while idx < 5
-      count = hand_rank.count(hand_rank[idx])
-      idx += 1
-      return true if count == 4
-    end
+    hand_rank.select { |rank| hand_rank.count(rank) == 4 }.size == 4
   end
 
   def full_house?
@@ -121,33 +115,17 @@ class PokerHand < Card
 
   def three_of_a_kind?
     hand_rank = @hand.map(&:rank)
-    idx = 0
-    while idx < 5
-      count = hand_rank.count(hand_rank[idx])
-      idx += 1
-      return true if count == 3
-    end
+    hand_rank.select { |rank| hand_rank.count(rank) == 3 }.size == 3
   end
 
   def two_pair?
     hand_rank = @hand.map(&:rank)
-    idx, pair = 0, true
-    while idx < 5
-      count = hand_rank.count(hand_rank.delete(hand_rank[idx]))
-      idx += 1
-      pair = !pair if count == 2
-    end
-    pair
+    hand_rank.select { |rank| hand_rank.count(rank) == 2 }.size == 4
   end
 
   def pair?
     hand_rank = @hand.map(&:rank)
-    idx, pair = 0, true
-    while idx < 5
-      count = hand_rank.count(hand_rank[idx])
-      idx += 1
-      return true if count == 2
-    end
+    hand_rank.select { |rank| hand_rank.count(rank) == 2 }.size == 1 
   end
 
 end
