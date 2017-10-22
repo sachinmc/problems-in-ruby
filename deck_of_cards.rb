@@ -11,7 +11,8 @@ class Deck
 
   def draw
     build_deck if deck == []
-    deck.delete(deck.sample)
+    # note Array#index uses objects == method
+    deck.delete_at(deck.index(deck.sample))
   end
 
   private
