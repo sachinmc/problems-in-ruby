@@ -15,3 +15,5 @@ def fizzbuzz(max)
   end
   result
 end
+
+puts fizzbuzz(15)
